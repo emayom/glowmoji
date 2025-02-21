@@ -11,7 +11,7 @@ import type { WithMotionProps } from "~/types/motion";
  * ==============   Types   ================
  */
 
-type Faces = (typeof FACES)[number];
+type Faces = "default" | "astonished" | "hmm";
 
 type EmojiFaceProps = WithMotionProps<"div"> & {
   distance: MotionValue<number>;
