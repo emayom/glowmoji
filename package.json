@@ -3,6 +3,7 @@
   "description": "Animation effect built with React + TypeScript and Framer Motion.",
   "license": "MIT",
   "version": "0.0.0",
+  "homepage": "https://emayom.github.io/glowmoji",
   "repository": {
     "type": "git",
     "url": "https://github.com/emayom/glowmoji"
