@@ -1,0 +1,8 @@
+.shimmer {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  z-index: 2;
+}

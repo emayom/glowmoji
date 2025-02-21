@@ -1,0 +1,183 @@
+@keyframes blink {
+  0% {
+    top: -120%;
+  }
+
+  95% {
+    top: -120%;
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+:where(.container) {
+  --eyes-gap: 30px;
+  --eyelid-color: var(--gray-7);
+  --white-size: 60px;
+  --pupil-size: 50px;
+  --pupil-color: var(--gray-1);
+  --eyelid-g: linear-gradient(
+        to bottom,
+        var(--eyelid-color) 30%,
+        transparent 30%,
+        transparent 100%
+      )
+      50% / 100% 100% no-repeat,
+    radial-gradient(
+        circle at bottom,
+        transparent 30%,
+        var(--gray-8) 31%,
+        var(--gray-8) 31%,
+        var(--eyelid-color) 50%
+      )
+      50% / 200% 200% no-repeat;
+}
+
+.container {
+  /* width: 100%; */
+
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.eyes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--eyes-gap);
+}
+
+.brow {
+  position: relative;
+  width: 80%;
+  height: 12px;
+  margin: 0 auto;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.eye {
+  position: relative;
+  width: var(--white-size);
+  height: var(--white-size);
+  overflow: hidden;
+  border-radius: var(--radius-round);
+}
+
+.eye .eyelid {
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: var(--eyelid-g);
+  z-index: var(--layer-1);
+  top: -120%;
+  animation: blink 3s infinite ease-in alternate;
+  animation-delay: 1s;
+}
+
+.eyes .white {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 8px 0;
+  box-sizing: border-box;
+  border-radius: inherit;
+  background: var(--gray-1);
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0,
+    inset rgb(99 99 99 / 20%) 0 2px 4px 2px;
+}
+
+.eye .pupil {
+  position: relative;
+  border-radius: var(--radius-round);
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--gray-10),
+    var(--gray-9),
+    var(--gray-8) 100%
+  );
+  width: var(--pupil-size);
+  height: var(--pupil-size);
+  top: calc((var(--white-size) / 2) - var(--pupil-size));
+  left: calc((var(--white-size) / 2) - (var(--pupil-size) / 2));
+  overflow: hidden;
+  box-shadow: 0 0 2px 2px var(--gray-9), inset 0 0 5px 0 var(--gray-9);
+}
+
+.eye .pupil::before,
+.eye .pupil::after {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: 0;
+  aspect-ratio: 1;
+  clip-path: polygon(
+    40% 40%,
+    50% 0,
+    60% 40%,
+    100% 50%,
+    60% 60%,
+    50% 100%,
+    40% 60%,
+    0 50%
+  );
+}
+
+.eye .pupil::after {
+  width: 35%;
+  height: 35%;
+  margin: auto;
+  background: var(--gray-0);
+}
+
+.eye .pupil::before {
+  width: 15%;
+  height: 15%;
+  background: var(--gray-3);
+  transform: translate(8px, 8px);
+}
+
+.mouth {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--gray-10),
+    var(--gray-9),
+    var(--gray-8) 100%
+  );
+  border-radius: var(--radius-round);
+  box-shadow: 0 0 2px 2px var(--gray-9), inset 0 0 5px 0 var(--gray-9);
+  margin-top: 8px;
+}
+
+.pixel-corners {
+  clip-path: polygon(
+    0 calc(100% - 8px),
+    4px calc(100% - 8px),
+    4px calc(100% - 4px),
+    8px calc(100% - 4px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 4px) 8px,
+    calc(100% - 4px) 4px,
+    calc(100% - 8px) 4px,
+    calc(100% - 8px) 0,
+    8px 0,
+    8px 4px,
+    4px 4px,
+    4px 8px,
+    0 8px
+  );
+}

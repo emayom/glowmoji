@@ -1,0 +1,14 @@
+.container {
+  cursor: pointer;
+  display: inline-flex;
+  height: max-content;
+  z-index: 1;
+}
+
+.dipserse {
+  white-space: nowrap;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

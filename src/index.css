@@ -1,0 +1,43 @@
+@import url("open-props/fonts");
+@import url("open-props/colors");
+@import url("open-props/colors-hsl");
+@import url("open-props/borders");
+@import url("open-props/easings");
+@import url("open-props/aspects");
+@import url("open-props/animations");
+@import url("open-props/zindex");
+@import url("open-props/sizes");
+
+:where(html) {
+  --font-silkscreen: "Silkscreen", serif, var(--font-system-ui);
+}
+
+:root {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-4);
+  font-synthesis: none;
+  line-height: var(--font-lineheight-3);
+  text-rendering: optimizelegibility;
+  color: var(--gray-6);
+  color-scheme: light dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--stone-12);
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}

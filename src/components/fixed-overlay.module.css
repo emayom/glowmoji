@@ -1,0 +1,80 @@
+:where(.overlay) {
+  --overlay-inset: 30px;
+  --overlay-font-size: var(--font-size-0);
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) {
+  .overlay:hover {
+    opacity: 1;
+  }
+}
+
+@media (width <= 768px) {
+  .kitz {
+    font-size: 22px;
+  }
+}
+
+/**
+ * ==============   Common   ================
+ */
+
+.overlay {
+  position: fixed;
+  z-index: 99;
+  opacity: 0;
+  white-space: nowrap;
+  animation: fade-in 1s ease forwards;
+  user-select: none;
+  font-family: var(--font-silkscreen);
+  font-size: var(--overlay-font-size);
+}
+
+.lt {
+  top: var(--overlay-inset);
+  left: var(--overlay-inset);
+}
+
+.rt {
+  top: var(--overlay-inset);
+  right: var(--overlay-inset);
+}
+
+.lb {
+  left: var(--overlay-inset);
+  bottom: var(--overlay-inset);
+}
+
+.rb {
+  right: var(--overlay-inset);
+  bottom: var(--overlay-inset);
+}
+
+/**
+ * ==============   Custom   ================
+ */
+
+.kitz {
+  top: 28px;
+  color: var(--gray-1);
+  font-size: var(--font-size-1);
+  letter-spacing: 3px;
+}
+
+.framer {
+  width: 16px;
+  height: 24px;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%2014%2021%22%3E%3Cpath%20d%3D%22M%207%207%20L%200%207%20L%200%2014%20L%207%2021%20L%207%2014%20L%2014%2014%20Z%20M%200%200%20L%2014%200%20L%2014%207%20L%207%207%20Z%22%20fill%3D%22hsl(0%2C%200%25%2C%20100%25)%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+}
+
+.pixels {
+  display: flex;
+  gap: 4px;
+}
