@@ -4,14 +4,14 @@ import { motion, MotionValue, useTransform, Variant } from "framer-motion";
 import clsx from "clsx";
 import styles from "./emoji-face.module.css";
 
-import { useElementRect, usePointerPosition } from "~/hooks";
+import { useElementRect, usePointerPosition, useIdle } from "~/hooks";
 import type { WithMotionProps } from "~/types/motion";
 
 /**
  * ==============   Types   ================
  */
 
-type Faces = "default" | "astonished" | "hmm";
+type Faces = "straight" | "default" | "astonished" | "hmm" | "drowsy";
 
 type EmojiFaceProps = WithMotionProps<"div"> & {
   distance: MotionValue<number>;
@@ -32,6 +32,10 @@ const pupilSize = {
 };
 
 const pupilVariants: FaceVariants = {
+  straight: {
+    width: pupilSize.default,
+    height: pupilSize.default,
+  },
   default: {
     width: pupilSize.default,
     height: pupilSize.default,
@@ -50,6 +54,11 @@ const pupilVariants: FaceVariants = {
     top: `calc((var(--white-size) / 2) - ${pupilSize.hmm}px)`,
     left: `calc((var(--white-size) / 2) - ${pupilSize.hmm}px / 2)`,
   },
+  drowsy: {
+    width: pupilSize.hmm,
+    height: pupilSize.hmm,
+    top: `calc((var(--white-size) / 2) - ${pupilSize.hmm}px) / 2`,
+  },
 };
 
 const mouseVariants: FaceVariants = {
@@ -57,12 +66,18 @@ const mouseVariants: FaceVariants = {
     borderRadius: "60% / 5% 5% 100% 100%",
   },
   astonished: {
+    width: 18,
     height: 20,
   },
   hmm: {
     width: 40,
     height: 4,
     transform: "translateX(10px)",
+  },
+  drowsy: {
+    width: 18,
+    height: 4,
+    borderRadius: "60% / 100% 100% 5% 5%",
   },
 };
 
@@ -86,8 +101,9 @@ const EmojiFace = ({
   const lEyeRect = useElementRect(lEyeRef);
   const rEyeRect = useElementRect(rEyeRef);
 
-  const [face, setFace] = useState<Faces>("default");
+  const [face, setFace] = useState<Faces>("straight");
 
+  const isIdle = useIdle();
   const { mouseX, mouseY } = usePointerPosition();
 
   const calcAngle = (
@@ -111,7 +127,7 @@ const EmojiFace = ({
     if (rect && mouseX && mouseY) {
       return calcAngle(rect, pos);
     }
-    return 45;
+    return 0;
   });
 
   const rightEyeAngle = useTransform<number, number>(
@@ -122,7 +138,8 @@ const EmojiFace = ({
       if (rect && mouseX && mouseY) {
         return calcAngle(rect, pos);
       }
-      return 45;
+
+      return 0;
     }
   );
 
@@ -140,8 +157,17 @@ const EmojiFace = ({
   useEffect(() => {
     distance.on("change", handleMouseMove);
 
+    isIdle.on("change", (latestValue) => {
+      if (latestValue) {
+        setFace("drowsy");
+      } else {
+        setFace("default");
+      }
+    });
+
     return () => {
       distance.destroy();
+      isIdle.destroy();
     };
   }, []);
 

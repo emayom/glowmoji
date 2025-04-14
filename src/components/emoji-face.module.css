@@ -12,11 +12,25 @@
   }
 }
 
+@keyframes drowsy {
+  0% {
+    top: -100%;
+  }
+
+  80% {
+    top: -100%;
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
 :where(.container) {
   --eyes-gap: 30px;
   --eyelid-color: var(--gray-7);
   --white-size: 60px;
-  --pupil-size: 50px;
+  --pupil-size: 40px;
   --pupil-color: var(--gray-1);
   --eyelid-g: linear-gradient(
         to bottom,
@@ -81,6 +95,10 @@
   animation-delay: 1s;
 }
 
+.container[data-face="drowsy"] .eye .eyelid {
+  animation: drowsy 3s infinite ease-in alternate;
+}
+
 .eyes .white {
   position: relative;
   width: 100%;
@@ -104,10 +122,12 @@
   );
   width: var(--pupil-size);
   height: var(--pupil-size);
-  top: calc((var(--white-size) / 2) - var(--pupil-size));
+  top: calc((var(--white-size) / 2) - var(--pupil-size) / 2);
   left: calc((var(--white-size) / 2) - (var(--pupil-size) / 2));
   overflow: hidden;
   box-shadow: 0 0 2px 2px var(--gray-9), inset 0 0 5px 0 var(--gray-9);
+
+  /* margin: auto; */
 }
 
 .eye .pupil::before,
