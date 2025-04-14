@@ -83,6 +83,7 @@ function App() {
   const centerX = useTransform(mouseX, [0, 300], [0, 300]);
   const centerY = useTransform(mouseY, [0, 300], [0, 300]);
 
+  // 얼굴 표정 컴포넌트 X/Y 포지션
   const positionX = useTransform(mouseX, [0, 150, 300], [-20, 0, 10]);
   const positionY = useTransform(mouseY, [0, 150, 300], [-20, 0, 30]);
 

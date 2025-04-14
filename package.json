@@ -39,6 +39,7 @@
     "@tsparticles/slim": "^3.8.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.0.6",
+    "lodash": "^4.17.21",
     "open-props": "^1.7.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
     "@eslint/js": "^9.17.0",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.13.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
@@ -58,6 +60,7 @@
     "lint-staged": "^15.4.3",
     "stylelint": "^16.14.1",
     "stylelint-config-standard": "^37.0.0",
+    "stylelint-order": "^6.0.4",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
