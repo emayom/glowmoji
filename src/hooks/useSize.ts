@@ -26,7 +26,6 @@ const getSize = (ref: Target) => {
   if (isNull(ref)) return [0, 0];
   if (ref.current) {
     const { width = 0, height = 0 } = ref.current.getBoundingClientRect();
-    console.log(ref.current.getBoundingClientRect());
     return [width, height];
   }
   return [0, 0];

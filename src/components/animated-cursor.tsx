@@ -26,7 +26,6 @@ function hasButtonOrAnchorAncestor(element: HTMLElement | null): boolean {
   }
 
   if (element.tagName === "BUTTON" || element.tagName === "A") {
-    console.log(element);
     return true;
   }
 
@@ -66,7 +65,7 @@ const AnimatedCursor = ({
   const smoothMouse = {
     x: useSpring(mouseX, spring),
     y: useSpring(mouseY, spring),
-    size: useSpring(cursorSize, spring),
+    size: useSpring(0, spring),
   };
 
   return createPortal(
